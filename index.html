@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improved User Experience</title>
+    <title>Enhanced Index</title>
     <style>
         body {
-            transition: background-color 0.5s ease;
-            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
         }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            border: none;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        h1 {
+            color: #333;
+            text-align: center;
         }
-        button:hover {
-            background-color: #0056b3;
+        .fade {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .fade-in {
+            opacity: 1;
         }
     </style>
 </head>
-<body>
-    <button onclick="playSound()">Click Me!</button>
-    <audio id="soundEffect" src="path/to/sound.mp3" preload="auto"></audio>
-
+<body class="fade">
+    <h1>Welcome to Enhanced Index</h1>
+    <audio id="background-audio" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
     <script>
-        function playSound() {
-            const sound = document.getElementById('soundEffect');
-            sound.currentTime = 0;
-            sound.play();
-            document.body.style.backgroundColor = '#cce5ff';
-            setTimeout(() => {
-                document.body.style.backgroundColor = '#f0f0f0';
-            }, 500);
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-in');
+            document.getElementById('background-audio').play();
+        });
+
+        window.addEventListener('beforeunload', () => {
+            document.getElementById('background-audio').pause();
+        });
     </script>
 </body>
 </html>
