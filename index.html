@@ -252,19 +252,27 @@
                 padding: 0 20px;
             }
 
+            .slot-machine-overlay {
+                padding: 0;
+            }
+
             .slot-machine {
-                padding: 30px 20px;
-                margin: 0 15px;
+                padding: 15px;
+                margin: 0;
+                max-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
 
             .slot-title {
-                font-size: 28px;
-                margin-bottom: 15px;
+                font-size: 20px;
+                margin-bottom: 5px;
             }
 
             .slot-subtitle {
-                font-size: 16px;
-                margin-bottom: 25px;
+                font-size: 13px;
+                margin-bottom: 10px;
             }
 
             .slot-container {
@@ -283,40 +291,82 @@
             }
 
             .spin-button {
-                font-size: 20px;
-                padding: 14px 40px;
-                margin-top: 25px;
+                font-size: 16px;
+                padding: 10px 25px;
+                margin-top: 15px;
             }
 
             .slot-result h3 {
-                font-size: 32px;
+                font-size: 24px;
             }
 
             .slot-result p {
-                font-size: 18px;
+                font-size: 14px;
             }
 
             .continue-button {
-                font-size: 18px;
-                padding: 12px 35px;
+                font-size: 14px;
+                padding: 8px 25px;
+                margin-top: 10px;
             }
 
             .agreement-intro h3 {
-                font-size: 32px;
+                font-size: 20px;
             }
 
             .agreement-intro p {
-                font-size: 16px;
+                font-size: 12px;
+            }
+
+            .agreement-box {
+                padding: 10px;
+                margin-top: 10px !important;
+            }
+
+            .agreement-box h4 {
+                font-size: 15px !important;
+                margin-bottom: 5px !important;
+            }
+
+            .agreement-box p {
+                font-size: 11px !important;
+                margin-bottom: 5px !important;
+                line-height: 1.3 !important;
+            }
+
+            .agreement-box ul {
+                font-size: 10px !important;
+                margin-bottom: 8px !important;
+                line-height: 1.3 !important;
+            }
+
+            .agreement-box li {
+                margin: 2px 0 !important;
             }
 
             .agreement-canvas {
                 max-width: 100%;
-                height: 200px;
+                height: 100px;
+            }
+
+            #signatureCanvas {
+                width: 100% !important;
+                height: 100px !important;
             }
 
             .agreement-buttons button {
-                font-size: 16px;
-                padding: 12px 30px;
+                font-size: 14px;
+                padding: 8px 25px;
+            }
+
+            #signatureHint {
+                font-size: 10px !important;
+                margin-top: 5px !important;
+            }
+
+            .clear-signature {
+                font-size: 9px !important;
+                padding: 3px 6px !important;
             }
         }
 
@@ -350,17 +400,30 @@
                 font-size: 18px;
             }
 
+            .slot-machine-overlay {
+                padding: 0;
+            }
+
             .slot-machine {
-                padding: 25px 15px;
-                margin: 0 10px;
+                padding: 10px;
+                margin: 0;
+                border-radius: 0;
+                max-height: 100vh;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
             }
 
             .slot-title {
-                font-size: 24px;
+                font-size: 18px;
+                margin-bottom: 3px;
             }
 
             .slot-subtitle {
-                font-size: 14px;
+                font-size: 11px !important;
+                margin-bottom: 8px;
+                margin-top: 0 !important;
             }
 
             .slot-reel {
@@ -375,28 +438,81 @@
             }
 
             .spin-button {
-                font-size: 18px;
-                padding: 12px 32px;
+                font-size: 14px;
+                padding: 8px 20px;
+                margin-top: 10px;
             }
 
             .slot-result h3 {
-                font-size: 28px;
+                font-size: 20px;
             }
 
             .slot-result p {
-                font-size: 16px;
+                font-size: 12px;
             }
 
             .agreement-intro h3 {
-                font-size: 28px;
+                font-size: 18px;
             }
 
             .agreement-intro p {
-                font-size: 14px;
+                font-size: 11px;
+            }
+
+            .agreement-box {
+                padding: 8px;
+                margin-top: 8px !important;
+            }
+
+            .agreement-box h4 {
+                font-size: 13px !important;
+                margin-bottom: 3px !important;
+            }
+
+            .agreement-box p {
+                font-size: 9px !important;
+                margin-bottom: 3px !important;
+                line-height: 1.2 !important;
+            }
+
+            .agreement-box ul {
+                font-size: 8px !important;
+                margin-bottom: 5px !important;
+                line-height: 1.2 !important;
+            }
+
+            .agreement-box li {
+                margin: 1px 0 !important;
+                padding-left: 3px !important;
             }
 
             .agreement-canvas {
-                height: 180px;
+                height: 80px;
+            }
+
+            #signatureCanvas {
+                width: 100% !important;
+                height: 80px !important;
+            }
+
+            .continue-button {
+                font-size: 12px;
+                padding: 6px 20px;
+                margin-top: 8px;
+            }
+
+            #signatureHint {
+                font-size: 9px !important;
+                margin-top: 3px !important;
+            }
+
+            .clear-signature {
+                font-size: 8px !important;
+                padding: 2px 5px !important;
+            }
+
+            .signature-container {
+                margin: 8px auto !important;
             }
         }
 
@@ -413,6 +529,7 @@
             align-items: center;
             justify-content: center;
             animation: fadeIn 0.3s ease;
+            padding: 10px;
         }
 
         .slot-machine {
@@ -422,6 +539,8 @@
             box-shadow: 0 20px 60px rgba(255, 20, 147, 0.5);
             text-align: center;
             position: relative;
+            width: 100%;
+            max-width: 600px;
         }
 
         .slot-title {
