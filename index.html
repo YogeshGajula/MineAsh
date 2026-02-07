@@ -214,16 +214,23 @@
             }
 
             .main-emoji {
-                font-size: 80px;
+                font-size: 60px;
             }
 
             h1 {
-                font-size: 36px;
+                font-size: 32px;
+                margin: 20px 0 15px;
             }
 
             .subtitle {
-                font-size: 20px;
+                font-size: 18px;
                 margin-bottom: 30px;
+            }
+
+            .button-container {
+                gap: 15px;
+                margin-top: 30px;
+                min-height: 60px;
             }
 
             button {
@@ -231,37 +238,36 @@
                 padding: 14px 35px;
             }
 
-            .button-container {
-                gap: 20px;
-                margin-top: 30px;
-            }
-
             .celebration-emoji {
-                font-size: 100px;
+                font-size: 80px;
             }
 
             .celebration h2 {
-                font-size: 48px;
+                font-size: 40px;
+                margin: 20px 0;
             }
 
             .celebration p {
-                font-size: 24px;
+                font-size: 20px;
+                padding: 0 20px;
             }
 
             .slot-machine {
                 padding: 30px 20px;
-                max-width: 90%;
+                margin: 0 15px;
             }
 
             .slot-title {
                 font-size: 28px;
+                margin-bottom: 15px;
             }
 
             .slot-subtitle {
                 font-size: 16px;
+                margin-bottom: 25px;
             }
 
-            .slot-reels {
+            .slot-container {
                 gap: 10px;
             }
 
@@ -273,6 +279,13 @@
             .slot-item {
                 font-size: 50px;
                 height: 120px;
+                line-height: 120px;
+            }
+
+            .spin-button {
+                font-size: 20px;
+                padding: 14px 40px;
+                margin-top: 25px;
             }
 
             .slot-result h3 {
@@ -283,38 +296,33 @@
                 font-size: 18px;
             }
 
-            .agreement-title {
+            .continue-button {
+                font-size: 18px;
+                padding: 12px 35px;
+            }
+
+            .agreement-intro h3 {
                 font-size: 32px;
             }
 
-            .agreement-subtitle {
-                font-size: 18px;
-            }
-
-            .agreement-text {
-                font-size: 16px;
-                max-height: 200px;
-            }
-
-            .signature-label {
+            .agreement-intro p {
                 font-size: 16px;
             }
 
-            #signatureCanvas {
+            .agreement-canvas {
                 max-width: 100%;
+                height: 200px;
             }
 
-            .agreement-buttons button,
-            .spin-button,
-            .continue-button {
-                font-size: 18px;
-                padding: 14px 35px;
+            .agreement-buttons button {
+                font-size: 16px;
+                padding: 12px 30px;
             }
         }
 
         @media screen and (max-width: 480px) {
             .main-emoji {
-                font-size: 60px;
+                font-size: 50px;
             }
 
             h1 {
@@ -322,7 +330,7 @@
             }
 
             .subtitle {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             button {
@@ -331,19 +339,20 @@
             }
 
             .celebration-emoji {
-                font-size: 80px;
+                font-size: 60px;
             }
 
             .celebration h2 {
-                font-size: 36px;
+                font-size: 32px;
             }
 
             .celebration p {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .slot-machine {
                 padding: 25px 15px;
+                margin: 0 10px;
             }
 
             .slot-title {
@@ -362,6 +371,12 @@
             .slot-item {
                 font-size: 40px;
                 height: 100px;
+                line-height: 100px;
+            }
+
+            .spin-button {
+                font-size: 18px;
+                padding: 12px 32px;
             }
 
             .slot-result h3 {
@@ -372,16 +387,16 @@
                 font-size: 16px;
             }
 
-            .agreement-title {
+            .agreement-intro h3 {
                 font-size: 28px;
             }
 
-            .agreement-subtitle {
-                font-size: 16px;
+            .agreement-intro p {
+                font-size: 14px;
             }
 
-            .agreement-text {
-                font-size: 14px;
+            .agreement-canvas {
+                height: 180px;
             }
         }
 
@@ -966,13 +981,10 @@
             const reels = ['reel1', 'reel2', 'reel3'];
             const spinDurations = [2000, 2500, 3000]; // Different speeds for drama
             
-            // Get actual item height from the DOM
-            const firstReel = document.getElementById('reel1');
-            const firstItem = firstReel.querySelector('.slot-item');
-            const itemHeight = firstItem ? firstItem.offsetHeight : 150;
-            
             reels.forEach((reelId, index) => {
                 const reel = document.getElementById(reelId);
+                // Dynamically get item height based on screen size
+                const itemHeight = window.innerWidth <= 480 ? 100 : (window.innerWidth <= 768 ? 120 : 150);
                 const totalSpins = 15 + index * 2; // More spins for later reels
                 
                 let currentPosition = 0;
