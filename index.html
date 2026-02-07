@@ -137,7 +137,7 @@
             background: white;
             color: #999;
             border: 3px solid #ffb6c1;
-            position: absolute;
+            position: relative;
             transition: all 0.1s ease;
         }
 
@@ -703,6 +703,14 @@
         // Make No button run away from cursor (first 3 times)
         noBtn.addEventListener('mouseenter', function() {
             if (noButtonMoves < 3) {
+                moveNoButton();
+            }
+        });
+
+        // Add touch support for mobile - move button when trying to tap it
+        noBtn.addEventListener('touchstart', function(e) {
+            if (noButtonMoves < 3) {
+                e.preventDefault(); // Prevent default touch behavior
                 moveNoButton();
             }
         });
