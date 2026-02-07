@@ -207,6 +207,184 @@
             }
         }
 
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .main-emoji {
+                font-size: 80px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            button {
+                font-size: 18px;
+                padding: 14px 35px;
+            }
+
+            .button-container {
+                gap: 20px;
+                margin-top: 30px;
+            }
+
+            .celebration-emoji {
+                font-size: 100px;
+            }
+
+            .celebration h2 {
+                font-size: 48px;
+            }
+
+            .celebration p {
+                font-size: 24px;
+            }
+
+            .slot-machine {
+                padding: 30px 20px;
+                max-width: 90%;
+            }
+
+            .slot-title {
+                font-size: 28px;
+            }
+
+            .slot-subtitle {
+                font-size: 16px;
+            }
+
+            .slot-reels {
+                gap: 10px;
+            }
+
+            .slot-reel {
+                width: 80px;
+                height: 120px;
+            }
+
+            .slot-item {
+                font-size: 50px;
+                height: 120px;
+            }
+
+            .slot-result h3 {
+                font-size: 32px;
+            }
+
+            .slot-result p {
+                font-size: 18px;
+            }
+
+            .agreement-title {
+                font-size: 32px;
+            }
+
+            .agreement-subtitle {
+                font-size: 18px;
+            }
+
+            .agreement-text {
+                font-size: 16px;
+                max-height: 200px;
+            }
+
+            .signature-label {
+                font-size: 16px;
+            }
+
+            #signatureCanvas {
+                max-width: 100%;
+            }
+
+            .agreement-buttons button,
+            .spin-button,
+            .continue-button {
+                font-size: 18px;
+                padding: 14px 35px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .main-emoji {
+                font-size: 60px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px 28px;
+            }
+
+            .celebration-emoji {
+                font-size: 80px;
+            }
+
+            .celebration h2 {
+                font-size: 36px;
+            }
+
+            .celebration p {
+                font-size: 20px;
+            }
+
+            .slot-machine {
+                padding: 25px 15px;
+            }
+
+            .slot-title {
+                font-size: 24px;
+            }
+
+            .slot-subtitle {
+                font-size: 14px;
+            }
+
+            .slot-reel {
+                width: 70px;
+                height: 100px;
+            }
+
+            .slot-item {
+                font-size: 40px;
+                height: 100px;
+            }
+
+            .slot-result h3 {
+                font-size: 28px;
+            }
+
+            .slot-result p {
+                font-size: 16px;
+            }
+
+            .agreement-title {
+                font-size: 28px;
+            }
+
+            .agreement-subtitle {
+                font-size: 16px;
+            }
+
+            .agreement-text {
+                font-size: 14px;
+            }
+        }
+
         /* Slot Machine Styles */
         .slot-machine-overlay {
             display: none;
@@ -788,9 +966,13 @@
             const reels = ['reel1', 'reel2', 'reel3'];
             const spinDurations = [2000, 2500, 3000]; // Different speeds for drama
             
+            // Get actual item height from the DOM
+            const firstReel = document.getElementById('reel1');
+            const firstItem = firstReel.querySelector('.slot-item');
+            const itemHeight = firstItem ? firstItem.offsetHeight : 150;
+            
             reels.forEach((reelId, index) => {
                 const reel = document.getElementById(reelId);
-                const itemHeight = 150; // Height of each slot item (120px on mobile)
                 const totalSpins = 15 + index * 2; // More spins for later reels
                 
                 let currentPosition = 0;
