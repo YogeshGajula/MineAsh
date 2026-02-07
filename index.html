@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Mine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* CSS STYLES BELOW */
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3"> 
+    </audio>
+    <audio id="sfx-click" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
+    <audio id="sfx-woosh" src="https://www.soundjay.com/nature/sounds/wind-breeze-01.mp3"></audio>
+    <audio id="sfx-win" src="https://www.soundjay.com/human/sounds/applause-01.mp3"></audio>
+
+    <button id="mute-btn">🔇</button>
+
+    <div id="stage-1" class="stage active">
+        <h1>Will You Be Mine?</h1>
+        <div class="buttons">
+            <button id="yes-btn" onclick="goToVictory()">Yes! ❤️</button>
+            <button id="no-btn">No 🙅‍♀️</button>
+        </div>
+    </div>
+
+    <div id="stage-2" class="stage">
+        <h2>⚠️ Wait! One Small Thing...</h2>
+        <p>Before you decline, you are legally required to sign this waiver acknowledging you are forfeiting a <b>Lifetime Mystery Prize</b>.</p>
+        
+        <div class="contract">
+            <p class="legal-text">
+                I, the undersigned, hereby agree to accept the outcome of the "Destiny Game" binding in perpetuity. I understand there are <b>NO RETURNS</b>, <b>NO REFUNDS</b>, and <b>NO EXCHANGES</b> on the prize won.
+            </p>
+            <canvas id="signature-pad"></canvas>
+            <div class="sign-hint">Sign above with finger or mouse</div>
+        </div>
+        
+        <button id="submit-sig" disabled>Accept & Continue</button>
+    </div>
+
+    <div id="stage-3" class="stage">
+        <h2>Let's see what you won!</h2>
+        <p>Spin the Wheel of Destiny!</p>
+        <div class="wheel-container">
+            <div class="arrow">⬇</div>
+            <div class="wheel" id="wheel">
+                <div class="segment" style="--i:1; --clr:#ffadad;"><span>Jackpot</span></div>
+                <div class="segment" style="--i:2; --clr:#ffd6a5;"><span>Grand Prize</span></div>
+                <div class="segment" style="--i:3; --clr:#fdffb6;"><span>True Love</span></div>
+                <div class="segment" style="--i:4; --clr:#caffbf;"><span>Forever</span></div>
+                <div class="segment" style="--i:5; --clr:#9bf6ff;"><span>Destiny</span></div>
+                <div class="segment" style="--i:6; --clr:#a0c4ff;"><span>Happiness</span></div>
+                <div class="segment" style="--i:7; --clr:#bdb2ff;"><span>Soulmate</span></div>
+                <div class="segment" style="--i:8; --clr:#ffc6ff;"><span>Big Win</span></div>
+            </div>
+        </div>
+        <button id="spin-btn">SPIN!</button>
+    </div>
+
+    <div id="stage-4" class="stage">
+        <h1>🎉 CONGRATULATIONS! 🎉</h1>
+        <p>You have won:</p>
+        <div class="prize-reveal">YOGI</div>
+        <p class="sub-prize">FOR A LIFETIME!</p>
+        <div class="legal-footer">
+            *As per the signed agreement, this prize is non-refundable. <br>
+            Welcome home. ❤️
+        </div>
+    </div>
+
+    </body> 
+</html>
