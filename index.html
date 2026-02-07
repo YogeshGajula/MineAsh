@@ -3,39 +3,891 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Index</title>
+    <title>Will You Be Mine? 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            transition: background-color 0.5s ease;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f0 25%, #fff0f8 50%, #ffe8f3 75%, #ffeef8 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: 'Baloo 2', cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
-        h1 {
-            color: #333;
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating hearts background */
+        .heart-bg {
+            position: absolute;
+            font-size: 20px;
+            animation: float 8s infinite ease-in-out;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
             text-align: center;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
         }
-        .fade {
-            opacity: 0;
-            transition: opacity 1s ease;
+
+        .main-emoji {
+            font-size: 120px;
+            animation: bounce 1.5s infinite;
+            display: inline-block;
+            filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.3));
         }
-        .fade-in {
-            opacity: 1;
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 56px;
+            color: #ff1493;
+            margin: 30px 0 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            min-height: 80px;
+        }
+
+        button {
+            font-family: 'Baloo 2', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 100;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        #noBtn {
+            background: white;
+            color: #999;
+            border: 3px solid #ffb6c1;
+            position: absolute;
+            transition: all 0.1s ease;
+        }
+
+        #noBtn:hover {
+            transform: scale(0.95);
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff1493, #ff69b4, #ffc0cb);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .celebration-content {
+            text-align: center;
+            color: white;
+        }
+
+        .celebration-emoji {
+            font-size: 150px;
+            animation: spin 1s ease-in-out;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg) scale(0); }
+            to { transform: rotate(360deg) scale(1); }
+        }
+
+        .celebration h2 {
+            font-size: 72px;
+            margin: 30px 0;
+            animation: slideUp 0.8s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .celebration p {
+            font-size: 32px;
+            animation: slideUp 1s ease;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: white;
+            position: absolute;
+            animation: confettiFall 3s linear infinite;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Slot Machine Styles */
+        .slot-machine-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .slot-machine {
+            background: linear-gradient(145deg, #ff1493, #ff69b4);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.5);
+            text-align: center;
+            position: relative;
+        }
+
+        .slot-title {
+            font-size: 36px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slot-subtitle {
+            font-size: 20px;
+            color: #ffe5f0;
+            margin-bottom: 30px;
+            font-family: 'Shadows Into Light', cursive;
+        }
+
+        .slots-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .slot {
+            width: 120px;
+            height: 150px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slot-reel {
+            position: absolute;
+            width: 100%;
+            transition: top 0.1s linear;
+        }
+
+        .slot-item {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            background: white;
+        }
+
+        .spin-button {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #ff1493;
+            font-size: 28px;
+            font-weight: 700;
+            padding: 20px 60px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .spin-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        .spin-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .slot-result {
+            display: none;
+            margin-top: 30px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .slot-result h3 {
+            font-size: 48px;
+            color: #ffd700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: glow 1s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px #ffd700; }
+            to { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px #ffd700, 0 0 30px #ffd700; }
+        }
+
+        .slot-result p {
+            font-size: 32px;
+            color: white;
+            margin: 10px 0;
+        }
+
+        .slot-result .winner-name {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .continue-button {
+            background: white;
+            color: #ff1493;
+            font-size: 24px;
+            font-weight: 700;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .continue-button:hover {
+            transform: scale(1.05);
+        }
+
+        .terms-conditions {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .agreement-section {
+            margin-top: 30px;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .agreement-box {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .agreement-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .agreement-box li {
+            margin: 8px 0;
+            padding-left: 5px;
+        }
+
+        .signature-container {
+            position: relative;
+            margin: 15px auto;
+            width: fit-content;
+        }
+
+        #signatureCanvas {
+            background: white;
+            border: 3px dashed #ff69b4;
+            border-radius: 10px;
+            cursor: crosshair;
+            display: block;
+            touch-action: none;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .clear-signature {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff1493;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Baloo 2', cursive;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .clear-signature:hover {
+            background: #ff69b4;
+            transform: scale(1.05);
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 30px;
+            animation: sparkleFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { transform: translateY(-50px) rotate(180deg); opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 42px; }
+            .subtitle { font-size: 22px; }
+            .main-emoji { font-size: 80px; }
+            button { font-size: 20px; padding: 15px 40px; }
+            .celebration h2 { font-size: 48px; }
+            .celebration p { font-size: 24px; }
+            .slot-machine { padding: 30px 20px; }
+            .slot-title { font-size: 28px; }
+            .slot { width: 90px; height: 120px; }
+            .slot-item { height: 120px; font-size: 45px; }
+            .spin-button { font-size: 22px; padding: 15px 40px; }
+            .slot-result h3 { font-size: 36px; }
+            .slot-result p { font-size: 24px; }
+            .slot-result .winner-name { font-size: 36px; }
+            #signatureCanvas { width: 100%; height: 120px; }
+            .agreement-box { padding: 15px; }
+            .agreement-box h4 { font-size: 18px; }
+            .agreement-box p, .agreement-box ul { font-size: 12px; }
         }
     </style>
 </head>
-<body class="fade">
-    <h1>Welcome to Enhanced Index</h1>
-    <audio id="background-audio" loop>
-        <source src="your-audio-file.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
+<body>
+    <!-- Floating hearts -->
+    <div class="heart-bg" style="left: 10%; animation-delay: 0s;">💕</div>
+    <div class="heart-bg" style="left: 30%; animation-delay: 2s;">💖</div>
+    <div class="heart-bg" style="left: 50%; animation-delay: 4s;">💗</div>
+    <div class="heart-bg" style="left: 70%; animation-delay: 1s;">💝</div>
+    <div class="heart-bg" style="left: 85%; animation-delay: 3s;">💕</div>
+
+    <div class="container">
+        <div class="main-emoji">🥺</div>
+        <h1>Will You Be Mine?</h1>
+        <p class="subtitle">This Propose Day, I have a question for you...</p>
+        
+        <div class="button-container">
+            <button id="yesBtn">Yes! 💕</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="slot-machine-overlay" id="slotMachineOverlay">
+        <div class="slot-machine">
+            <div class="sparkles" id="sparkles"></div>
+            
+            <!-- Agreement Section (shown first) -->
+            <div class="agreement-intro" id="agreementIntro">
+                <h2 class="slot-title">📜 Wait! Read This First! 📜</h2>
+                <p class="slot-subtitle" style="font-size: 22px;">Before we proceed to the "random" slot machine... 😏</p>
+                
+                <div class="agreement-box" style="margin-top: 30px;">
+                    <h4 style="color: white; font-size: 24px; margin-bottom: 15px;">Official Lifetime Agreement</h4>
+                    <p style="font-size: 16px; color: #ffe5f0; text-align: left; line-height: 1.6; margin-bottom: 15px;">
+                        I, the participant, hereby agree that <strong>whatever I win</strong> from the slot machine, I will accept as my lifetime prize. 
+                        I understand and acknowledge that:
+                    </p>
+                    <ul style="font-size: 15px; color: #ffe5f0; text-align: left; margin-bottom: 20px; line-height: 1.8;">
+                        <li>✓ This is a LIFETIME commitment (no trial period!)</li>
+                        <li>✓ Returns, exchanges, and refunds are strictly prohibited</li>
+                        <li>✓ No backsies, no take-backs, no "just kidding"</li>
+                        <li>✓ I accept the prize sight unseen, no questions asked</li>
+                        <li>✓ The prize comes with unlimited responsibilities 💕</li>
+                        <li>✓ This agreement is legally binding upon signing below</li>
+                        <li>✓ I waive all rights to complain, return, or regret</li>
+                    </ul>
+                    <p style="font-size: 16px; color: white; margin-bottom: 10px; font-weight: 600;">
+                        Sign below to proceed to the slot machine:
+                    </p>
+                    <div class="signature-container">
+                        <canvas id="signatureCanvas" width="400" height="150"></canvas>
+                        <button class="clear-signature" id="clearSignature">Clear ✖</button>
+                    </div>
+                    <p style="font-size: 12px; color: #ffe5f0; margin-top: 5px; font-style: italic;">
+                        Sign with your finger or mouse
+                    </p>
+                    <p style="font-size: 11px; color: #ffd700; margin-top: 10px; font-style: italic;">
+                        ⚠️ Warning: By signing, you agree to accept your mystery prize for life!
+                    </p>
+                </div>
+                
+                <button class="continue-button" id="proceedToSlot" disabled style="opacity: 0.5; margin-top: 25px;">
+                    Proceed to Slot Machine 🎰
+                </button>
+                <p id="signatureHint" style="font-size: 14px; color: #ffd700; margin-top: 10px;">
+                    ☝️ Sign the agreement first!
+                </p>
+            </div>
+            
+            <!-- Slot Machine Section (shown after signing) -->
+            <div class="slot-section" id="slotSection" style="display: none;">
+                <h2 class="slot-title">🎰 Last Chance Casino! 🎰</h2>
+                <p class="slot-subtitle">Agreement signed! Now let's see what fate has in store... 😏</p>
+                <p class="slot-subtitle" style="font-size: 18px; margin-top: -20px; margin-bottom: 20px;">
+                    (Disclaimer: The house always wins... and the house wants you to say yes 😉)
+                </p>
+                
+                <div class="slots-container">
+                    <div class="slot" id="slot1">
+                        <div class="slot-reel" id="reel1"></div>
+                    </div>
+                    <div class="slot" id="slot2">
+                        <div class="slot-reel" id="reel2"></div>
+                    </div>
+                    <div class="slot" id="slot3">
+                        <div class="slot-reel" id="reel3"></div>
+                    </div>
+                </div>
+                
+                <button class="spin-button" id="spinButton">SPIN! 🎰</button>
+                
+                <div class="terms-conditions">
+                    <p style="font-size: 12px; color: #ffe5f0; margin-top: 15px; font-style: italic;">
+                        *Terms & Conditions Apply: Winner cannot discard, return, or exchange their gift for lifetime. 
+                        No refunds. No backsies. Forever binding. 💕
+                    </p>
+                </div>
+                
+                <div class="slot-result" id="slotResult">
+                    <h3>🎉 WOHOOO! 🎉</h3>
+                    <p>You have won</p>
+                    <p class="winner-name">YOGI</p>
+                    <p>for a LIFETIME! 💕✨</p>
+                    <p style="font-size: 16px; margin-top: 15px; font-style: italic; color: #ffd700;">
+                        (As per the agreement you signed... this is binding! 😄)
+                    </p>
+                    <button class="continue-button" id="continueButton">Claim Your Prize! 💖</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <div class="celebration-content">
+            <div class="celebration-emoji">💖</div>
+            <h2>Yay! 🎉</h2>
+            <p>You've made me the happiest person! 💕✨</p>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('fade-in');
-            document.getElementById('background-audio').play();
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const celebration = document.getElementById('celebration');
+        const buttonContainer = document.querySelector('.button-container');
+        const slotMachineOverlay = document.getElementById('slotMachineOverlay');
+        const spinButton = document.getElementById('spinButton');
+        const slotResult = document.getElementById('slotResult');
+        const continueButton = document.getElementById('continueButton');
+
+        let noBtnSize = 1;
+        let yesBtnSize = 1;
+        let noButtonMoves = 0;
+
+        // Signature canvas setup
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let hasSignature = false;
+
+        // Set up canvas for drawing
+        function setupCanvas() {
+            ctx.strokeStyle = '#ff1493';
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+        }
+
+        // Drawing functions
+        function startDrawing(e) {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            hasSignature = true;
+            
+            // Enable the continue button once signature starts
+            if (hasSignature) {
+                const proceedBtn = document.getElementById('proceedToSlot');
+                proceedBtn.disabled = false;
+                proceedBtn.style.opacity = '1';
+                document.getElementById('signatureHint').style.display = 'none';
+            }
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+        }
+
+        // Clear signature
+        document.getElementById('clearSignature').addEventListener('click', function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            hasSignature = false;
+            const proceedBtn = document.getElementById('proceedToSlot');
+            proceedBtn.disabled = true;
+            proceedBtn.style.opacity = '0.5';
+            document.getElementById('signatureHint').style.display = 'block';
         });
 
-        window.addEventListener('beforeunload', () => {
-            document.getElementById('background-audio').pause();
+        // Mouse events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+
+        // Touch events
+        canvas.addEventListener('touchstart', startDrawing);
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', stopDrawing);
+
+        setupCanvas();
+
+        // Proceed to slot machine after signing
+        document.getElementById('proceedToSlot').addEventListener('click', function() {
+            document.getElementById('agreementIntro').style.display = 'none';
+            document.getElementById('slotSection').style.display = 'block';
+            initializeReels();
+        });
+
+        // Slot machine emojis
+        const slotEmojis = ['💕', '💖', '💗', '💝', '❤️', '🌹', '💐', '✨'];
+        const winningEmoji = '💖';
+
+        // Initialize slot reels
+        function initializeReels() {
+            const reels = ['reel1', 'reel2', 'reel3'];
+            reels.forEach(reelId => {
+                const reel = document.getElementById(reelId);
+                let reelHTML = '';
+                // Create 20 items for smooth spinning
+                for (let i = 0; i < 20; i++) {
+                    const emoji = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
+                    reelHTML += `<div class="slot-item">${emoji}</div>`;
+                }
+                reel.innerHTML = reelHTML;
+                reel.style.top = '0px';
+            });
+        }
+
+        // Make No button run away from cursor (first 3 times)
+        noBtn.addEventListener('mouseenter', function() {
+            if (noButtonMoves < 3) {
+                moveNoButton();
+            }
+        });
+
+        function moveNoButton() {
+            const container = buttonContainer.getBoundingClientRect();
+            const button = noBtn.getBoundingClientRect();
+            
+            // Calculate maximum positions to keep button in viewport
+            const maxX = window.innerWidth - button.width - 20;
+            const maxY = window.innerHeight - button.height - 20;
+            
+            // Generate random position
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            // Move button to random position
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            // Shrink No button
+            noBtnSize *= 0.9;
+            noBtn.style.transform = `scale(${noBtnSize})`;
+            
+            // Grow Yes button
+            yesBtnSize *= 1.08;
+            yesBtn.style.transform = `scale(${yesBtnSize})`;
+            
+            // Change text to make it more desperate
+            const desperate = [
+                'No',
+                'Maybe No?',
+                'Are you sure?',
+                'Really? 🥺'
+            ];
+            
+            noBtn.textContent = desperate[noButtonMoves];
+            
+            noButtonMoves++;
+
+            // After 3 moves, make it clickable with different style
+            if (noButtonMoves === 3) {
+                noBtn.textContent = 'Still No? 🎰';
+                noBtn.style.background = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+                noBtn.style.color = '#ff1493';
+                noBtn.style.transform = `scale(1)`;
+                noBtn.style.animation = 'pulse 1s infinite';
+            }
+        }
+
+        // No button click handler
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (noButtonMoves < 3) {
+                moveNoButton();
+            } else {
+                // Show slot machine
+                slotMachineOverlay.style.display = 'flex';
+                document.getElementById('agreementIntro').style.display = 'block';
+                document.getElementById('slotSection').style.display = 'none';
+                createSparkles();
+            }
+        });
+
+        // Spin button handler
+        spinButton.addEventListener('click', function() {
+            spinButton.disabled = true;
+            spinButton.textContent = 'SPINNING...';
+            
+            spinSlots();
+        });
+
+        function spinSlots() {
+            const reels = ['reel1', 'reel2', 'reel3'];
+            const spinDurations = [2000, 2500, 3000]; // Different speeds for drama
+            
+            reels.forEach((reelId, index) => {
+                const reel = document.getElementById(reelId);
+                const itemHeight = 150; // Height of each slot item (120px on mobile)
+                const totalSpins = 15 + index * 2; // More spins for later reels
+                
+                let currentPosition = 0;
+                const spinInterval = setInterval(() => {
+                    currentPosition -= itemHeight;
+                    reel.style.top = currentPosition + 'px';
+                    
+                    // Reset position for infinite scroll effect
+                    if (Math.abs(currentPosition) >= itemHeight * 15) {
+                        currentPosition = 0;
+                        reel.style.top = '0px';
+                    }
+                }, 50);
+                
+                // Stop at winning position
+                setTimeout(() => {
+                    clearInterval(spinInterval);
+                    
+                    // Calculate position to show winning emoji
+                    const finalPosition = -itemHeight * 10; // Show 11th item
+                    reel.style.transition = 'top 0.5s ease-out';
+                    reel.style.top = finalPosition + 'px';
+                    
+                    // Update the winning position to show the heart
+                    const items = reel.querySelectorAll('.slot-item');
+                    if (items[10]) {
+                        items[10].textContent = winningEmoji;
+                    }
+                    
+                    // Show result after all reels stop
+                    if (index === 2) {
+                        setTimeout(() => {
+                            showWinResult();
+                        }, 600);
+                    }
+                }, spinDurations[index]);
+            });
+        }
+
+        function showWinResult() {
+            slotResult.style.display = 'block';
+            
+            // Create celebration confetti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = ['#ffd700', '#ff69b4', '#ffc0cb', '#fff'][Math.floor(Math.random() * 4)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    slotMachineOverlay.appendChild(confetti);
+                }, i * 30);
+            }
+        }
+
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            for (let i = 0; i < 8; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = '✨';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+
+        // Continue button - go to final celebration
+        continueButton.addEventListener('click', function() {
+            slotMachineOverlay.style.display = 'none';
+            celebration.style.display = 'flex';
+            
+            // Create more confetti for final celebration
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = ['#ff1493', '#ff69b4', '#ffc0cb', '#fff'][Math.floor(Math.random() * 4)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    celebration.appendChild(confetti);
+                }, i * 30);
+            }
+        });
+
+        // Yes button celebration
+        yesBtn.addEventListener('click', function() {
+            celebration.style.display = 'flex';
+            
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = ['#ff1493', '#ff69b4', '#ffc0cb', '#fff'][Math.floor(Math.random() * 4)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    celebration.appendChild(confetti);
+                }, i * 30);
+            }
         });
     </script>
 </body>
