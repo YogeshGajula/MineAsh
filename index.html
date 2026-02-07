@@ -401,28 +401,30 @@
             }
 
             .slot-machine-overlay {
-                padding: 0;
+                padding: 10px;
             }
 
             .slot-machine {
                 padding: 10px;
                 margin: 0;
-                border-radius: 0;
-                max-height: 100vh;
-                height: 100vh;
+                border-radius: 15px;
+                max-height: 95vh;
+                height: auto;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
+                overflow-y: auto;
             }
 
             .slot-title {
-                font-size: 18px;
-                margin-bottom: 3px;
+                font-size: 16px;
+                margin-bottom: 2px;
+                margin-top: 0;
             }
 
             .slot-subtitle {
-                font-size: 11px !important;
-                margin-bottom: 8px;
+                font-size: 10px !important;
+                margin-bottom: 6px;
                 margin-top: 0 !important;
             }
 
@@ -452,21 +454,23 @@
             }
 
             .agreement-intro h3 {
-                font-size: 18px;
+                font-size: 16px;
+                margin-top: 0;
             }
 
             .agreement-intro p {
-                font-size: 11px;
+                font-size: 10px;
             }
 
             .agreement-box {
                 padding: 8px;
-                margin-top: 8px !important;
+                margin-top: 6px !important;
             }
 
             .agreement-box h4 {
-                font-size: 13px !important;
+                font-size: 12px !important;
                 margin-bottom: 3px !important;
+                margin-top: 0 !important;
             }
 
             .agreement-box p {
@@ -487,22 +491,22 @@
             }
 
             .agreement-canvas {
-                height: 80px;
+                height: 70px;
             }
 
             #signatureCanvas {
                 width: 100% !important;
-                height: 80px !important;
+                height: 70px !important;
             }
 
             .continue-button {
                 font-size: 12px;
                 padding: 6px 20px;
-                margin-top: 8px;
+                margin-top: 6px;
             }
 
             #signatureHint {
-                font-size: 9px !important;
+                font-size: 8px !important;
                 margin-top: 3px !important;
             }
 
@@ -512,7 +516,7 @@
             }
 
             .signature-container {
-                margin: 8px auto !important;
+                margin: 6px auto !important;
             }
         }
 
@@ -1122,16 +1126,17 @@
                 setTimeout(() => {
                     clearInterval(spinInterval);
                     
-                    // Calculate position to show winning emoji
-                    const finalPosition = -itemHeight * 10; // Show 11th item
-                    reel.style.transition = 'top 0.5s ease-out';
-                    reel.style.top = finalPosition + 'px';
-                    
-                    // Update the winning position to show the heart
+                    // Update the winning position to show the heart FIRST
                     const items = reel.querySelectorAll('.slot-item');
                     if (items[10]) {
                         items[10].textContent = winningEmoji;
                     }
+                    
+                    // Calculate position to center the winning emoji in viewport
+                    // The slot window shows one item, so we need to position item 10 at top:0
+                    const finalPosition = -itemHeight * 10;
+                    reel.style.transition = 'top 0.5s ease-out';
+                    reel.style.top = finalPosition + 'px';
                     
                     // Show result after all reels stop
                     if (index === 2) {
