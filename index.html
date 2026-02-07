@@ -771,8 +771,9 @@
 
     <div class="container">
         <div class="main-emoji">🥺</div>
-        <h1>Will You Be Mine?</h1>
         <p class="subtitle">This Propose Day, I have a question for you...</p>
+        <h1>Will You Be Mine?</h1>
+        
         
         <div class="button-container">
             <button id="yesBtn">Yes! 💕</button>
@@ -1060,7 +1061,7 @@
             gifContainer.className = 'gif-container';
             
             const gifImage = document.createElement('img');
-            gifImage.src = 'https://convertico.com/samples/webp/tom-jerry-animated-webp.webp';
+            gifImage.src = './tom-jerry-animated-webp.webp';
             gifImage.alt = 'Tom and Jerry';
             gifImage.className = 'gif-image';
             
@@ -1070,7 +1071,7 @@
             
             const backButton = document.createElement('button');
             backButton.className = 'gif-button';
-            backButton.textContent = 'Come back! 💕';
+            backButton.textContent = 'Ok I Have Something For You 💕';
             
             backButton.addEventListener('click', () => {
                 gifOverlay.style.animation = 'fadeOut 0.5s ease';
